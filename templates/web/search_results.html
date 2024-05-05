@@ -1,0 +1,91 @@
+{% extends "web/base.html" %}
+{% load static %}
+
+{% block content %}
+
+        <div class="home-banner">
+          <div class="bannerContainer home-banner1">
+            <h1 class="home-banner-heading heading2">
+              Search results for "{{ query }}"
+            </h1>
+            <div class=" heading 3">
+                <span class="home-text02" style="color: var(--dl-color-gray-500)"  >Found  {{ repositories|length }} results</span > 
+            </div>
+            {% if repositories %}
+            <div class="repository-list">
+                {% for repository in repositories %}
+                <div class="repo-card">
+                    <div class="user-info">
+                        <div class="left">
+                            <img src="{{ repository.avatar_url }}" alt="Profile" class="rounded-full">
+                            <div class="user-name">{{ repository.full_name }}</div>
+                        </div>
+                        <div class="right">
+                            <a href="{{ repository.html_url }}"><button class="visit-button">Visit Repo</button></a>
+                        </div>
+                    </div>
+                    <div class="repo-description">
+                        {% if repository.description %}
+                            <p>{{ repository.description }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="topic">
+                        {% for topic in repository.topic.all %}
+                            <span>{{ topic.name }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="bottom">
+                        <div class="left">
+                            <span>Stars : {{ repository.stars }}</span>
+                            <span>Forks : {{ repository.forks }}</span>
+                        </div>
+                        <div class="right">
+                            <div class="updated-timeline">Updated : {{repository.updated_at}}</div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+            <div class="pagination-container">
+                <div class=" heading 3" style="margin-bottom: 10px">
+                    <span class="home-text02" style="color: var(--dl-color-gray-500)"  >Showing  {{ repositories.start_index }} - {{ repositories.end_index }}</span > 
+                </div>
+                <ul class="pagination">
+                    {% if repositories.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?query={{ query }}&?page=1">&laquo;</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?query={{ query }}&?page={{ repositories.previous_page_number }}">{{repositories.previous_page_number}}</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item active">
+                        <span class="page-link">{{ repositories.number }}</span>
+                    </li>
+
+                    {% if repositories.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?query={{ query }}&page={{ repositories.next_page_number }}">{{ repositories.next_page_number }}</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?query={{ query }}&page={{ repositories.paginator.num_pages }}"> &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            {% else %}
+            <div class="empty-result">
+                <img src="{% static 'images/empty_result.png' %}" alt="">
+                <h3 class="no-repo-found">No repositories found</h3>
+            </div>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+
+{% endblock content %}

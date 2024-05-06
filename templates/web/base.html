@@ -262,7 +262,7 @@
             <p class="modal-description">Enter the name of the repository you want to search for:</p>
             <div class="modal-input">
               <form class="search-form" action="{% url 'web:search_repositories' %}" method="GET">
-                  <input id="searchInput" type="text" name="query" placeholder="Enter repository name...">
+                  <input id="searchInput" type="text" name="query" required value="{{query}}" placeholder="Enter repository name...">
                   <button type="submit" id="searchButton">Search</button>
               </form>
           </div>

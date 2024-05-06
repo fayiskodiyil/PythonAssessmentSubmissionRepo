@@ -1,6 +1,6 @@
 # Github RepoFinder
 
-###  This repository contains a web application built with Django, which interfaces with a third-party API. It enables users to interact with the API's data, storing and retrieving information from a relational database.
+###  This repository contains a web application built with Django, which interfaces with a Github API. It enables users to interact with the API's data, storing and retrieving information from a relational database.
 
 ## Prerequisites
 

@@ -33,6 +33,9 @@ python manage.py migrate
 # Run the Django server
 python manage.py runserver
 
+# For error pages set DEBUG = False is settings.py file in project folder
+
+
 # For running tests
 python manage.py test
 

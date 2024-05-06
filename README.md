@@ -43,3 +43,4 @@ python manage.py test
 ![alt](usage-examples/screenshot_1.png)
 ![alt](usage-examples/screenshot_2.png)
 ![alt](usage-examples/screenshot_3.png)
+![alt](usage-examples/screenshot_4.png)

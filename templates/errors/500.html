@@ -1,0 +1,20 @@
+{% extends 'web/base.html' %}
+
+{% block content %}
+    <div class="not-found-container">
+        <h3>OOPS! AN ERROR OCCURRED</h3>
+        <div class="not-found-container1">
+            <h1 class="not-found-text1">ERROR</h1>
+        </div>
+        <div class="not-found-container2">
+            <h2 class="not-found-text2">WE ARE SORRY, BUT AN ERROR OCCURRED WHILE PROCESSING YOUR REQUEST</h2>
+            {% if message %}
+            {% comment %} <div>
+                <h6>{{message}}</h6>
+            </div> {% endcomment %}
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
+    

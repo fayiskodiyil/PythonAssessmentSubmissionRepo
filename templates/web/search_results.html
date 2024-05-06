@@ -4,7 +4,7 @@
 {% block content %}
 
         <div class="home-banner">
-          <div class="bannerContainer home-banner1">
+          <div class="bannerContainer home-banner1" {% if not repositories%} style="padding:200px;" {% endif %}>
             <h1 class="home-banner-heading heading2">
               Search results for "{{ query }}"
             </h1>
@@ -89,3 +89,23 @@
     <!-- The Modal -->
 
 {% endblock content %}
+{% block static %}
+    <style>
+        .empty-result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .no-repo-found {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        .empty-result img {
+            width: 500px;
+
+        }
+    </style>
+{% endblock static %}

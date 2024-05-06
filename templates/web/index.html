@@ -16,7 +16,7 @@
                 </div>
               {% endif %}
               <form class="search-form" action="{% url 'web:search_repositories' %}" method="GET">
-                  <input id="searchInput" type="text" class="search-input" name="query" placeholder="Enter repository name...">
+                  <input id="searchInput" type="text" class="search-input" name="query" placeholder="Enter repository name..." required>
                   <button type="submit" class="buttonFilled" id="searchButton">Search</button>
               </form>
             </div>

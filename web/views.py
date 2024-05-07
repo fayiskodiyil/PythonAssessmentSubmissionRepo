@@ -56,6 +56,7 @@ def search_repositories(request):
 
         # Re-query repositories after fetching from API
         repositories = Repository.objects.filter(name__icontains=query)
+        results_count = repositories.count()
 
         # Paginate the repositories
         paginator = Paginator(repositories, 10)
@@ -69,7 +70,8 @@ def search_repositories(request):
         context = {
             'repositories': repositories,
             'query': query,
-            'page_title': "Search Results"
+            'page_title': "Search Results",
+            'results_count' : results_count
         }
 
         return render(request, 'web/search_results.html', context)
